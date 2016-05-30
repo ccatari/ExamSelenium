@@ -12,12 +12,6 @@ public class InboxHome extends AbstractListSection {
     private WebElement tastNameField;
     @FindBy(xpath = "//span[contains(.,'Add Task')]")
     private WebElement addTaskButton;
-    /*@FindAll({
-            @FindBy(css = "span[class='text sel_item_content']")
-    })
-    private List<WebElement> taskNamesList;
-    @FindBy(xpath = "//img[contains(@class,'cmp_priority')]")
-    private WebElement inputBoxMenu;*/
 
 
     public void clickAddNewTask() {

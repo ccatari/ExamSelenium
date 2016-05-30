@@ -14,13 +14,19 @@ public class ProjectMenu extends AbstractBasePage {
 
     public ProjectHomePage goToProject(String project) {
         wait.until(ExpectedConditions.visibilityOf(menuOptions));
-        List<WebElement> options = menuOptions.findElements(By.tagName("span"));
+        List<WebElement> options = getOptions();
         for (WebElement option: options) {
-            if(option.getText().equalsIgnoreCase(project)){
+            if(isSelectedProject(option,project)){
                 option.click();
                 return new ProjectHomePage();
             }
         }
         return new ProjectHomePage();
+    }
+    public boolean isSelectedProject(WebElement option,String project){
+        return option.getText().equalsIgnoreCase(project);
+    }
+    public List<WebElement> getOptions(){
+        return menuOptions.findElements(By.tagName("span"));
     }
 }

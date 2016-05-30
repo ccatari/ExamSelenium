@@ -18,10 +18,16 @@ public class HandleObjects {
 
     @Test
     public void goToInboxTest() {
+        String taskName = "task 1";
+        int priority = 4;
+
+        // add task in Inbox page
         InboxHome inbox = mainContainer.goToInboxMenu();
         inbox.clickAddNewTask();
-        inbox.addNexTask("task 1", 4);
-        Assert.assertEquals(inbox.getLastTaskAsText(), "task 1 p4", "Task is not created properly in 'Inbox'");
+        inbox.addNexTask(taskName, priority);
+
+        // validate the addition
+        Assert.assertEquals(inbox.getLastTaskAsText().toLowerCase(), (taskName + " p" + priority).toLowerCase(), "Task is not created properly in 'Inbox'");
     }
 
     @Test
@@ -29,14 +35,16 @@ public class HandleObjects {
         String taskName = "task1";
         int priority = 2;
         String projectName = "Personal";
+
         // add the task with quick form
         TopBar topBar = mainContainer.goToTopBar();
         AddTaskForm addTaskForm = topBar.clickQuickAddTask();
-        addTaskForm.addTask(taskName,priority,projectName);
+        addTaskForm.addTask(taskName, priority, projectName);
+
         // validate the creation
         ProjectMenu projectMenu = mainContainer.goToProjectMenu();
         ProjectHomePage projectHome = projectMenu.goToProject(projectName);
-        Assert.assertEquals(projectHome.getLastTaskCreated(),"task1 Personal p2","Quick Task form does not create properly a task");
+        Assert.assertEquals(projectHome.getLastTaskCreated().toLowerCase(), (taskName + " " + projectName + " p" + priority).toLowerCase(), "Quick Task form does not create properly a task");
 
     }
 }

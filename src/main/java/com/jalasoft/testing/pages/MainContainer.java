@@ -1,3 +1,5 @@
+package com.jalasoft.testing.pages;
+
 import java.util.List;
 
 import org.openqa.selenium.WebElement;

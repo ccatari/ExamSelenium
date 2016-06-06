@@ -1,11 +1,19 @@
+package com.jalasoft.testing;
+
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import com.jalasoft.testing.pages.*;
 
 /**
  * Created by ccatari on 5/25/2016.
  */
 public class HandleObjects {
+    private static final int PRIORITY_ONE = 1;
+    private static final int PRIORITY_TWO = 2;
+    private static final int PRIORITY_THREE = 3;
+    private static final int PRIORITY_FOUR = 4;
     private MainContainer mainContainer;
 
     @BeforeClass
@@ -19,7 +27,7 @@ public class HandleObjects {
     @Test
     public void goToInboxTest() {
         String taskName = "task 1";
-        int priority = 4;
+        int priority = PRIORITY_FOUR;
 
         // add task in Inbox page
         InboxHome inbox = mainContainer.goToInboxMenu();
@@ -33,7 +41,7 @@ public class HandleObjects {
     @Test
     public void addAQuickTaskTest() {
         String taskName = "task1";
-        int priority = 2;
+        int priority = PRIORITY_TWO;
         String projectName = "Personal";
 
         // add the task with quick form

@@ -1,3 +1,5 @@
+package com.jalasoft.testing.pages;
+
 /**
  * Created by ccatari on 5/25/2016.
  */

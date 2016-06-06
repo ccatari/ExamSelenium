@@ -1,3 +1,5 @@
+package com.jalasoft.testing.pages;
+
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -8,7 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 /**
  * Created by ccatari on 5/30/2016.
  */
-public class AbstractListSection extends AbstractBasePage {
+public class AbstractListSection extends AbstractAddTaskForm {
 
     @FindAll({
             @FindBy(css = "span[class='text sel_item_content']")
@@ -18,13 +20,17 @@ public class AbstractListSection extends AbstractBasePage {
     private WebElement inputBoxMenu;
 
     public String getLastTaskNameText() {
-        System.out.println("taskSize: "+taskList.size());
+        System.out.println("taskSize: " + taskList.size());
         return getLastTask().getText();
     }
 
     public String getLastTaskPriorityText() {
         wait.until(ExpectedConditions.visibilityOf(getLastTask()));
         getLastTask().click();
+        return getLastTaskPriorityTextFromForm();
+    }
+
+    public String getLastTaskPriorityTextFromForm() {
         wait.until(ExpectedConditions.visibilityOf(inputBoxMenu));
         inputBoxMenu.click();
         TaskPriorityPopUp lastTaskPriority = new TaskPriorityPopUp();

@@ -1,3 +1,5 @@
+package com.jalasoft.testing.pages;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,7 +10,8 @@ import org.openqa.selenium.support.FindBy;
  * Created by ccatari on 5/29/2016.
  */
 public class TaskPriorityPopUp extends AbstractBasePage {
-    public static String SELECTED_OPTION_CLASS = "pri_selected";
+
+    public static final String SELECTED_OPTION_CLASS = "pri_selected";
     @FindBy(css = "div[class='AmiMenu priority_menu']")
 
     private WebElement priorityIcons;
@@ -35,6 +38,7 @@ public class TaskPriorityPopUp extends AbstractBasePage {
     }
 
     public String getlastTaskPriorityAsText() {
-        return "" + PRIORITY_CHARACTER + getSelectedPriority();
+        StringBuilder priorityText = new StringBuilder(HomePage.PRIORITY_CHARACTER + getSelectedPriority());
+        return priorityText.toString();
     }
 }
